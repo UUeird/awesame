@@ -17,7 +17,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 ## Improve: Design & layout
 
 - [ ] Make footer icons larger / more touch-friendly on mobile.
-- [ ] Add hover states to footer icons.
 - [ ] Consider a dark/light theme toggle or a more intentional color palette.
 
 ---
@@ -27,7 +26,7 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 - [ ] **Bio section** — a short paragraph about awesame: who, what, genre, etc.
 - [ ] **Links / releases section** — Spotify, Apple Music, Bandcamp, or other streaming links.
 - [ ] **Shows / tour dates** — even a simple static list of upcoming gigs.
-- [ ] **Press / EPK page** — downloadable one-sheet, high-res photos, quote cards.
+- [ ] **Press / EPK page** — populate with bio, downloadable one-sheet, high-res photos, quote cards.
 - [ ] **Contact form** — static form via Formspree or similar (no server needed).
 
 ---
@@ -41,8 +40,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 ## Tech: Maintenance & tooling
 
 - [ ] Remove `awesame.js` or give it actual purpose; drop jQuery if nothing needs it.
-- [ ] **Adopt Jekyll for multi-page support** — add `_config.yml`, create a shared `_layouts/default.html` so all pages share the same header/footer/nav, and migrate `index.html` to use it.
-- [ ] Add a `_config.yml` to configure Jekyll site title, description, and baseurl.
 - [ ] Consider adding a `favicon.ico` / `<link rel="icon">`.
 - [ ] Audit and compress images (awesame.png is ~40KB; check logos for web-ready sizes).
 
@@ -60,3 +57,9 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 - [x] Update Twitter to X branding — new SVG icon, link updated to x.com/awesame.
 - [x] Remove dead Facebook and YouTube footer links.
 - [x] Add Instagram link/icon (instagram.com/awesa.me).
+- [x] Replace email.png with consistent SVG icon.
+- [x] Space footer icons with padding.
+- [x] Add hover states to footer icons.
+- [x] Adopt Jekyll — added `_config.yml`, `_layouts/default.html` with shared header/nav/footer; migrated index.html.
+- [x] Create My Story page scaffold (timeline layout).
+- [x] Create Press Kit page scaffold.

@@ -1,0 +1,13 @@
+title: awesame
+description: Music by Sam Lawrence
+url: "https://awesa.me"
+baseurl: ""
+
+# Exclude files that shouldn't be served
+exclude:
+  - README.md
+  - ROADMAP.md
+  - CLAUDE.md
+  - "awesame logos/"
+  - "*.ai"
+  - "*.eps"
