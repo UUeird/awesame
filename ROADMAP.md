@@ -5,14 +5,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 
 ---
 
-## Fix: Critical issues
-
-- [x] **Fix HTTP jQuery** — switched to `https://code.jquery.com/jquery-3.7.1.min.js`.
-- [x] **Fix HTML structure** — moved `<link>` and `<script>` into `<head>`, fixed tag order.
-- [x] **Add `<meta charset="UTF-8">` and viewport tag** — prevents text scaling bugs on mobile.
-
----
-
 ## Improve: SEO & discoverability
 
 - [ ] Add Open Graph tags (`og:title`, `og:description`, `og:image`) for rich previews when shared on social.
@@ -24,8 +16,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 
 ## Improve: Design & layout
 
-- [ ] Make the SoundCloud embed responsive (currently hard-coded `width="50%"` and `height="475"`).
-- [ ] Add padding/margin above the embed so the logo and player don't crowd each other.
 - [ ] Make footer icons larger / more touch-friendly on mobile.
 - [ ] Add hover states to footer icons.
 - [ ] Consider a dark/light theme toggle or a more intentional color palette.
@@ -44,7 +34,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 
 ## Feature: Social & platform updates
 
-- [ ] Update Twitter/X icon and link to current handle or replace with a more relevant platform (Instagram, TikTok, etc.).
 - [ ] Add Instagram link/icon.
 - [ ] Add Spotify or Apple Music follow link.
 
@@ -65,3 +54,9 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 - [x] Set up GitHub Pages with custom domain `awesa.me` (CNAME).
 - [x] Jekyll build workflow deployed via GitHub Actions (Jekyll not yet used — just passes static files through).
 - [x] Basic single-page layout with logo, SoundCloud embed, and social footer.
+- [x] Fix HTTP jQuery — switched to `https://code.jquery.com/jquery-3.7.1.min.js`.
+- [x] Fix HTML structure — moved `<link>` and `<script>` into `<head>`, fixed tag order.
+- [x] Add `<meta charset="UTF-8">` and viewport tag.
+- [x] Replace SoundCloud embed with footer profile link (soundcloud.com/awesame).
+- [x] Update Twitter to X branding — new SVG icon, link updated to x.com/awesame.
+- [x] Remove dead Facebook and YouTube footer links.
