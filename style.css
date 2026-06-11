@@ -85,6 +85,16 @@ html, body {
   opacity: 1;
 }
 
+/* ── Bio ── */
+.bio {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ccc;
+  font-size: 1.05em;
+  line-height: 1.8;
+}
+
 /* ── Pages ── */
 .page-title {
   font-size: 2em;
