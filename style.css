@@ -19,6 +19,7 @@ html, body {
 #site-header img {
   max-width: 400px;
   width: 50%;
+  filter: invert(1);
 }
 
 /* ── Nav ── */
