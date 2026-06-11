@@ -34,7 +34,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 
 ## Feature: Social & platform updates
 
-- [ ] Add Instagram link/icon.
 - [ ] Add Spotify or Apple Music follow link.
 
 ---
@@ -60,3 +59,4 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 - [x] Replace SoundCloud embed with footer profile link (soundcloud.com/awesame).
 - [x] Update Twitter to X branding — new SVG icon, link updated to x.com/awesame.
 - [x] Remove dead Facebook and YouTube footer links.
+- [x] Add Instagram link/icon (instagram.com/awesa.me).
