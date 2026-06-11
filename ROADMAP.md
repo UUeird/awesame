@@ -5,7 +5,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 
 ---
 
-
 ## Improve: Design & layout
 
 - [ ] Make footer icons larger / more touch-friendly on mobile.
@@ -26,14 +25,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 ## Feature: Social & platform updates
 
 - [ ] Add Spotify or Apple Music follow link.
-
----
-
-## Tech: Maintenance & tooling
-
-- [ ] Remove `awesame.js` or give it actual purpose; drop jQuery if nothing needs it.
-- [ ] Consider adding a `favicon.ico` / `<link rel="icon">`.
-- [ ] Audit and compress images (awesame.png is ~40KB; check logos for web-ready sizes).
 
 ---
 
@@ -59,3 +50,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 - [x] Add Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`).
 - [x] Add sitemap via `jekyll-sitemap` plugin (auto-generates `/sitemap.xml`).
 - [x] Add `robots.txt` pointing crawlers to sitemap.
+- [x] Remove `awesame.js` (empty) and drop jQuery (nothing used it).
+- [x] Add SVG favicon using brand color #f5a800.
+- [x] Compress `awesame-logo.png` with optipng — 40KB → 28KB (29% smaller). Remove unused `awesame.png`.
