@@ -7,9 +7,9 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 
 ## Fix: Critical issues
 
-- [ ] **Fix HTTP jQuery** — change `http://code.jquery.com/jquery-latest.js` to HTTPS, or replace with a slim CDN version (e.g. jsDelivr). Mixed-content blocks on HTTPS.
-- [ ] **Fix HTML structure** — move `<link>` and `<script>` tags inside `<head>`, add `<!DOCTYPE html>` properly.
-- [ ] **Add `<meta charset="UTF-8">` and viewport tag** — prevents text scaling bugs on mobile.
+- [x] **Fix HTTP jQuery** — switched to `https://code.jquery.com/jquery-3.7.1.min.js`.
+- [x] **Fix HTML structure** — moved `<link>` and `<script>` into `<head>`, fixed tag order.
+- [x] **Add `<meta charset="UTF-8">` and viewport tag** — prevents text scaling bugs on mobile.
 
 ---
 
