@@ -5,14 +5,6 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 
 ---
 
-## Improve: SEO & discoverability
-
-- [ ] Add Open Graph tags (`og:title`, `og:description`, `og:image`) for rich previews when shared on social.
-- [ ] Add `<meta name="description">` tag.
-- [ ] Add a `sitemap.xml` or rely on Jekyll's sitemap plugin.
-- [ ] Add `robots.txt`.
-
----
 
 ## Improve: Design & layout
 
@@ -63,3 +55,7 @@ Items are grouped by theme. Move finished items to the **Done** section at the b
 - [x] Adopt Jekyll — added `_config.yml`, `_layouts/default.html` with shared header/nav/footer; migrated index.html.
 - [x] Create My Story page scaffold (timeline layout).
 - [x] Create Press Kit page scaffold.
+- [x] Add `<meta name="description">` tag (per-page via front matter, fallback to site description).
+- [x] Add Open Graph tags (`og:title`, `og:description`, `og:image`, `og:url`).
+- [x] Add sitemap via `jekyll-sitemap` plugin (auto-generates `/sitemap.xml`).
+- [x] Add `robots.txt` pointing crawlers to sitemap.

@@ -1,9 +1,14 @@
 title: awesame
-description: Music by Sam Lawrence
+description: Electronic music by Sam Lawrence — DJ, producer, and founder of UUeird.
 url: "https://awesa.me"
 baseurl: ""
 
 # Exclude files that shouldn't be served
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
 exclude:
   - README.md
   - ROADMAP.md
