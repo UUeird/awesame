@@ -40,7 +40,7 @@ html, body {
 #site-nav a:hover,
 #site-nav a.active {
   color: #fff;
-  border-bottom: 1px solid #ede208;
+  border-bottom: 1px solid #f5a800;
 }
 
 /* ── Main content ── */
@@ -91,7 +91,7 @@ html, body {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 2em;
-  color: #ede208;
+  color: #f5a800;
 }
 
 .page-section {
@@ -130,13 +130,13 @@ html, body {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #ede208;
+  background: #f5a800;
 }
 
 .timeline-year {
   min-width: 4.5em;
   text-align: right;
-  color: #ede208;
+  color: #f5a800;
   font-size: 0.9em;
   padding-top: 0.2em;
   letter-spacing: 0.05em;
@@ -166,7 +166,7 @@ html, body {
   font-size: 1.1em;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #ede208;
+  color: #f5a800;
   margin-bottom: 0.6em;
 }
 
