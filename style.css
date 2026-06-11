@@ -108,7 +108,7 @@ html, body {
 .timeline::before {
   content: '';
   position: absolute;
-  left: 5.5em;
+  left: 8em;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -125,7 +125,7 @@ html, body {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: 5.25em;
+  left: 7.75em;
   top: 0.35em;
   width: 10px;
   height: 10px;
@@ -134,12 +134,12 @@ html, body {
 }
 
 .timeline-year {
-  min-width: 4.5em;
+  min-width: 7em;
   text-align: right;
   color: #f5a800;
   font-size: 0.9em;
   padding-top: 0.2em;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
 .timeline-body {
