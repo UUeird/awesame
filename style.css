@@ -1,38 +1,193 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
+  background-color: #111;
+  color: #fff;
+  font-family: helvetica, arial, sans-serif;
 }
 
-#header {
-	text-align: center;
-	font-family: helvetica;
-	font-size: 45px;
-}
-
-#container {
+/* ── Header ── */
+#site-header {
   text-align: center;
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -4em;
+  padding: 2em 0 1em;
 }
 
+#site-header img {
+  max-width: 400px;
+  width: 50%;
+  filter: invert(1);
+}
+
+/* ── Nav ── */
+#site-nav {
+  text-align: center;
+  padding: 0.75em 0 1.5em;
+}
+
+#site-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.95em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 1.25em;
+}
+
+#site-nav a:hover,
+#site-nav a.active {
+  color: #fff;
+  border-bottom: 1px solid #f5a800;
+}
+
+/* ── Main content ── */
+#content {
+  padding: 2em 1.5em 6em;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ── Footer ── */
 .footer {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   bottom: 0;
   height: 4em;
   width: 100%;
-  text-align: center;
-  background-color: black;
-  color: white;
+  background-color: #000;
+  color: #fff;
 }
 
 .footer-box {
-  display: inline-block;
-  font-family: arial;
+  display: inline-flex;
+  align-items: center;
   height: 100%;
+  padding: 0 12px;
+}
+
+.footer-box a {
+  display: flex;
+  align-items: center;
+}
+
+.icon-invert {
+  filter: invert(1);
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+
+.icon-invert:hover {
+  opacity: 1;
+}
+
+/* ── Bio ── */
+.bio {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ccc;
+  font-size: 1.05em;
+  line-height: 1.8;
+}
+
+/* ── Pages ── */
+.page-title {
+  font-size: 2em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 2em;
+  color: #f5a800;
+}
+
+.page-section {
+  padding-top: 1em;
+}
+
+/* ── Timeline ── */
+.timeline {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6.5em;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #333;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 2em;
+  margin-bottom: 2.5em;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 6.25em;
+  top: 0.35em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #f5a800;
+}
+
+.timeline-year {
+  min-width: 5.5em;
+  max-width: 5.5em;
+  text-align: right;
+  color: #f5a800;
+  font-size: 0.9em;
+  padding-top: 0.2em;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.timeline-body {
+  padding-left: 1.5em;
+}
+
+.timeline-heading {
+  font-size: 1.05em;
+  margin-bottom: 0.4em;
+  color: #fff;
+}
+
+.timeline-body p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* ── Press Kit ── */
+.press-block {
+  margin-bottom: 2.5em;
+}
+
+.press-block h2 {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #f5a800;
+  margin-bottom: 0.6em;
+}
+
+.press-block p,
+.press-block a {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.press-block a:hover {
+  color: #fff;
 }
