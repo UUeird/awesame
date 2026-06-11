@@ -18,3 +18,4 @@ exclude:
   - "awesame logos/"
   - "*.ai"
   - "*.eps"
+  - _site
