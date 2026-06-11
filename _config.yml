@@ -8,6 +8,8 @@ exclude:
   - README.md
   - ROADMAP.md
   - CLAUDE.md
+  - Gemfile
+  - Gemfile.lock
   - "awesame logos/"
   - "*.ai"
   - "*.eps"
