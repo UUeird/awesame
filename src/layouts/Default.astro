@@ -1,0 +1,68 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const siteTitle = 'awesame';
+const siteDescription = 'Electronic music by Sam Lawrence — DJ, producer, and founder of UUeird.';
+
+const { title, description = siteDescription } = Astro.props;
+const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL('/awesame-logo.png', Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{pageTitle}</title>
+  <meta name="description" content={description}>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content={siteTitle}>
+  <meta property="og:title" content={pageTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:image" content={ogImageUrl}>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <div id="site-header">
+    <a href="/"><img src="/awesame-logo.png" alt="awesame" width="50%" class="site-logo"></a>
+  </div>
+
+  <nav id="site-nav">
+    <a href="/" class={Astro.url.pathname === '/' ? 'active' : undefined}>Home</a>
+    <a href="/my-story" class={Astro.url.pathname.includes('my-story') ? 'active' : undefined}>My Story</a>
+    <a href="/press" class={Astro.url.pathname.includes('press') ? 'active' : undefined}>Press Kit</a>
+  </nav>
+
+  <main id="content">
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="footer-box">
+      <a href="mailto:sam@uueird.com"><img src="/images/icons/email.svg" width="32" height="32" class="icon-invert" alt="Email"/></a>
+    </div>
+    <div class="footer-box">
+      <a href="https://x.com/awesame"><img src="/images/icons/x.svg" width="32" height="32" class="icon-invert" alt="X"/></a>
+    </div>
+    <div class="footer-box">
+      <a href="https://soundcloud.com/awesame"><img src="/images/icons/soundcloud.svg" width="32" height="32" class="icon-invert" alt="SoundCloud"/></a>
+    </div>
+    <div class="footer-box">
+      <a href="https://www.instagram.com/awesa.me"><img src="/images/icons/instagram.svg" width="32" height="32" class="icon-invert" alt="Instagram"/></a>
+    </div>
+  </footer>
+
+</body>
+</html>

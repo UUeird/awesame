@@ -6,32 +6,33 @@ This is the source for [awesa.me](https://awesa.me) — a personal music/artist 
 
 ## Deployment
 
-- **Branch:** `gh-pages` is the production branch. All pushes trigger the Jekyll build-and-deploy workflow at [.github/workflows/jekyll-gh-pages.yml](.github/workflows/jekyll-gh-pages.yml).
-- **Hosting:** GitHub Pages with Jekyll. No build step is required locally — GitHub Pages renders static HTML/CSS/JS directly.
-- **Constraint:** No server-side code, no Node.js build pipeline, no npm packages. Everything must work as plain static files (HTML, CSS, vanilla JS, or CDN-loaded libraries).
+- **Branch:** `gh-pages` is the production branch. All pushes trigger the Astro build-and-deploy workflow at [.github/workflows/astro-gh-pages.yml](.github/workflows/astro-gh-pages.yml).
+- **Hosting:** GitHub Pages, serving the static output of an Astro build (`npm run build` → `dist/`). CI builds with Node 22 (see `.nvmrc` for the local pin).
+- **Constraint:** No server-side code, no server-side rendering, no environment variables at runtime. Everything ships as plain static HTML/CSS/JS output by the Astro build.
+
+## Local development
+
+```
+npm install
+npm run dev       # local dev server
+npm run build      # production build to dist/
+npm run preview    # preview the production build
+```
+
+Requires Node >=22.12 (`.nvmrc` pins this — run `nvm use` if using nvm).
 
 ## Current structure
 
 ```
-index.html      — single-page site
-style.css       — global styles
-awesame.js      — empty jQuery ready handler (jQuery loaded from CDN)
-awesame.png     — logo image
-images/icons/   — social media icons (facebook, twitter, youtube, email)
-awesame logos/  — brand assets (not served, design reference only)
-CNAME           — custom domain: awesa.me
+src/pages/          — one .astro file per route (index, my-story, press)
+src/layouts/Default.astro — shared layout: head/meta/OG tags, header, nav, footer
+public/              — static assets served as-is (style.css, favicon.svg, awesame-logo.png, images/icons/, robots.txt)
+astro.config.mjs      — site URL + @astrojs/sitemap integration
+CNAME                — custom domain: awesa.me
 ```
-
-## Known issues / tech debt
-
-- jQuery loaded over HTTP (not HTTPS) from code.jquery.com — will cause mixed-content warnings on HTTPS pages.
-- `<LINK>` and `<script>` tags appear before `<html>` / `<head>` — malformed HTML structure.
-- No `<meta charset>`, viewport tag, or Open Graph tags.
-- Twitter link uses old `twitter.com` handle; X rebranded.
-- `awesame.js` is essentially empty.
 
 ## Constraints to keep in mind
 
 - GitHub Pages serves static files only. No server-side rendering, no environment variables at runtime.
-- Jekyll is available but not currently used (no `_config.yml`, no Liquid templates). Adding Jekyll features is fine but not required.
-- All external scripts/fonts must be loaded from CDN or bundled in the repo.
+- Sitemap is generated automatically by `@astrojs/sitemap` at build time.
+- No UI framework (React/Vue/etc.) is installed — pages are plain `.astro` files with no client-side interactivity today. Add an integration only if a feature actually needs it.
