@@ -6,7 +6,7 @@ This is the source for [awesa.me](https://awesa.me) — a personal music/artist 
 
 ## Deployment
 
-- **Branch:** `gh-pages` is the production branch. All pushes trigger the Astro build-and-deploy workflow at [.github/workflows/astro-gh-pages.yml](.github/workflows/astro-gh-pages.yml).
+- **Branch:** `main` is the default and production branch. All pushes trigger the Astro build-and-deploy workflow at [.github/workflows/astro-gh-pages.yml](.github/workflows/astro-gh-pages.yml).
 - **Hosting:** GitHub Pages, serving the static output of an Astro build (`npm run build` → `dist/`). CI builds with Node 22 (see `.nvmrc` for the local pin).
 - **Constraint:** No server-side code, no server-side rendering, no environment variables at runtime. Everything ships as plain static HTML/CSS/JS output by the Astro build.
 
