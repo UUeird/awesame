@@ -126,14 +126,21 @@ html, body {
   align-items: center;
 }
 
-@media (max-width: 400px) {
+/* Phones: larger icons inside 48px tap targets (5 × 56px fits 320px) */
+@media (max-width: 600px) {
   .footer-box {
-    padding: 0 6px;
+    padding: 0 4px;
+  }
+
+  .footer-box a {
+    justify-content: center;
+    width: 48px;
+    height: 48px;
   }
 
   .footer-box img {
-    width: 26px;
-    height: 26px;
+    width: 36px;
+    height: 36px;
   }
 }
 
