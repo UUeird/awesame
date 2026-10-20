@@ -327,6 +327,12 @@ html, body {
   line-height: 1.6;
 }
 
+.press-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+}
+
 .press-block a:hover {
   color: var(--color-text);
 }
