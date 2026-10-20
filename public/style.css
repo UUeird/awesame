@@ -29,17 +29,18 @@
   --ink-1000: #090704;
 
   /* Roles */
-  --color-bg: var(--ink-950);
-  --color-line: var(--ink-800);
-  --color-text: var(--ink-50);
-  --color-text-secondary: var(--ink-200);
-  --color-text-muted: var(--ink-300);
-  --color-accent: var(--amber-400);
+  --color-bg: var(--amber-400);
+  --color-line: var(--amber-600);
+  --color-text: var(--ink-950);
+  --color-text-secondary: var(--amber-900);
+  --color-text-muted: var(--amber-800);
+  --color-accent: var(--ink-950);
 
-  /* Yellow bands: the header and footer that frame every page */
-  --color-band: var(--amber-400);
+  /* Header and footer: same yellow as the page, set off by a dark rule */
+  --color-band: var(--color-bg);
   --color-on-band: var(--ink-950);
   --color-on-band-muted: var(--amber-900);
+  --color-band-rule: var(--ink-950);
 }
 
 * {
@@ -71,6 +72,7 @@ html, body {
   text-align: center;
   padding: 0.75em 0 1.5em;
   background-color: var(--color-band);
+  border-bottom: 2px solid var(--color-band-rule);
 }
 
 #site-nav a {
@@ -108,6 +110,7 @@ html, body {
   width: 100%;
   background-color: var(--color-band);
   color: var(--color-on-band);
+  border-top: 2px solid var(--color-band-rule);
 }
 
 .footer-box {
