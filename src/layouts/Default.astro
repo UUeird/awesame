@@ -10,6 +10,22 @@ const siteDescription = 'Electronic music by Sam Lawrence — DJ, producer, and 
 const { title, description = siteDescription } = Astro.props;
 const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname;
+
+const navItems = [
+  { label: 'home', href: '/', current: path === '/' },
+  { label: 'my story', href: '/my-story', current: path.includes('my-story') },
+  { label: 'press kit', href: '/press', current: path.includes('press') },
+  { label: 'merch', href: 'https://bassmerch.threadless.com/collections/awesame', external: true },
+];
+
+// Email last; X dropped
+const socials = [
+  { label: 'Bandcamp', href: 'https://awesame.bandcamp.com/', icon: '/images/icons/bandcamp.svg', external: true },
+  { label: 'SoundCloud', href: 'https://soundcloud.com/awesame', icon: '/images/icons/soundcloud.svg', external: true },
+  { label: 'Instagram', href: 'https://www.instagram.com/awesa.me', icon: '/images/icons/instagram.svg', external: true },
+  { label: 'Email', href: 'mailto:sam@uueird.com', icon: '/images/icons/email.svg', external: false },
+];
 const ogImageUrl = new URL('/awesame-logo.png', Astro.site);
 ---
 
@@ -30,7 +46,11 @@ const ogImageUrl = new URL('/awesame-logo.png', Astro.site);
   <meta property="og:image" content={ogImageUrl}>
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;600&display=swap">
   <link rel="stylesheet" href="/style.css">
+  <script is:inline>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
@@ -39,10 +59,24 @@ const ogImageUrl = new URL('/awesame-logo.png', Astro.site);
     <a href="/"><img src="/awesame-logo.png" alt="awesame" width="50%" class="site-logo"></a>
   </div>
 
-  <nav id="site-nav">
-    <a href="/" class={Astro.url.pathname === '/' ? 'active' : undefined}>Home</a>
-    <a href="/my-story" class={Astro.url.pathname.includes('my-story') ? 'active' : undefined}>My Story</a>
-    <a href="/press" class={Astro.url.pathname.includes('press') ? 'active' : undefined}>Press Kit</a>
+  <nav id="site-nav" aria-label="Main">
+    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav-list" aria-label="Menu">
+      <svg class="icon-open" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="icon-close" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <ul id="site-nav-list">
+      {navItems.map((item) => (
+        <li>
+          {item.external ? (
+            <a href={item.href} target="_blank" rel="noopener noreferrer">
+              {item.label}<svg class="out-arrow" aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M2 10 10 2M3.5 2H10v6.5"/></svg><span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+          ) : (
+            <a href={item.href} aria-current={item.current ? 'page' : undefined}>{item.label}</a>
+          )}
+        </li>
+      ))}
+    </ul>
   </nav>
 
   <main id="content">
@@ -50,22 +84,34 @@ const ogImageUrl = new URL('/awesame-logo.png', Astro.site);
   </main>
 
   <footer class="footer">
-    <div class="footer-box">
-      <a href="mailto:sam@uueird.com"><img src="/images/icons/email.svg" width="32" height="32" class="footer-icon" alt="Email"/></a>
-    </div>
-    <div class="footer-box">
-      <a href="https://x.com/awesame"><img src="/images/icons/x.svg" width="32" height="32" class="footer-icon" alt="X"/></a>
-    </div>
-    <div class="footer-box">
-      <a href="https://awesame.bandcamp.com/"><img src="/images/icons/bandcamp.svg" width="32" height="32" class="footer-icon" alt="Bandcamp"/></a>
-    </div>
-    <div class="footer-box">
-      <a href="https://soundcloud.com/awesame"><img src="/images/icons/soundcloud.svg" width="32" height="32" class="footer-icon" alt="SoundCloud"/></a>
-    </div>
-    <div class="footer-box">
-      <a href="https://www.instagram.com/awesa.me"><img src="/images/icons/instagram.svg" width="32" height="32" class="footer-icon" alt="Instagram"/></a>
-    </div>
+    <ul class="socials" aria-label="Social links">
+      {socials.map((social) => (
+        <li>
+          <a href={social.href} aria-label={social.label} target={social.external ? '_blank' : undefined} rel={social.external ? 'noopener noreferrer' : undefined}>
+            <img src={social.icon} width="16" height="16" alt="">
+          </a>
+        </li>
+      ))}
+    </ul>
   </footer>
+
+  <script>
+    const nav = document.getElementById('site-nav');
+    const toggle = nav?.querySelector<HTMLButtonElement>('.nav-toggle');
+
+    function setOpen(open: boolean) {
+      nav?.classList.toggle('open', open);
+      toggle?.setAttribute('aria-expanded', String(open));
+    }
+
+    toggle?.addEventListener('click', () => setOpen(!nav?.classList.contains('open')));
+    nav?.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('open')) {
+        setOpen(false);
+        toggle?.focus();
+      }
+    });
+  </script>
 
 </body>
 </html>
