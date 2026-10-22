@@ -1,93 +1,60 @@
 ---
 import Default from '../layouts/Default.astro';
+
+// Each event: start (and optional end) as [year, month]. Kept in date order.
+const events = [
+  { start: [2014, 11], date: 'Nov 2014', heading: 'Started learning to DJ', text: 'The beginning of the journey.' },
+  { start: [2015, 6], date: 'Jun 2015', heading: "Nonsense at Noni's", text: "Played at Nonsense at Noni's, supporting Kimber." },
+  { start: [2016, 8], date: 'Aug 2016', heading: 'Played Jungle', text: 'DJ set at Jungle.' },
+  { start: [2016, 12], date: 'Dec 2016', heading: 'Released "Lil Bat" Score', text: 'Released the Lil Bat score on SoundCloud.' },
+  { start: [2017, 1], date: 'Jan 2017', heading: 'Played Iris (side room)', text: 'DJ set in the side room at the old Iris location.' },
+  { start: [2017, 12], end: [2019, 12], date: 'Dec 2017–Dec 2019', heading: 'Ran Contrast', text: 'Hosted and ran Contrast, a regular party night.' },
+  { start: [2018, 1], date: 'Jan 2018', heading: 'Launched UUeird', text: 'Founded the record label UUeird.' },
+  { start: [2018, 8], date: 'Aug 2018', heading: 'Slow & Low at Aisle 5', text: 'Played Slow & Low at Aisle 5.' },
+  { start: [2020, 1], date: 'Jan 2020', heading: 'Aisle 5 supporting MartyParty', text: 'Support set for MartyParty at Aisle 5.' },
+  { start: [2020, 2], date: 'Feb 2020', heading: 'The Masquerade (Torch event)', text: 'Played the Masquerade for a Torch event.' },
+];
+
+// Horizontal timeline (desktop): place each event as a % along the axis.
+const months = ([y, m]: number[]) => y * 12 + m;
+const axisStart = months([2014, 9]);
+const axisEnd = months([2020, 4]);
+const pos = (d: number[]) => ((months(d) - axisStart) / (axisEnd - axisStart)) * 100;
+
+const years = [2015, 2016, 2017, 2018, 2019, 2020];
 ---
 <Default title="My Story" description="The story of awesame — from picking up DJing in 2014 to founding UUeird and beyond.">
   <section class="page-section">
     <h1 class="page-title">My Story</h1>
     <p class="page-intro">awesame is the project of Sam Lawrence, an Atlanta DJ and producer who hosted the Contrast party for two years and founded the label UUeird.</p>
 
-    <ol class="timeline">
+    <div class="timeline-wrap">
+      <ol class="timeline">
+        {events.map((event, i) => {
+          const p = pos(event.start);
+          const edge = p < 15 ? 'is-start' : p > 85 ? 'is-end' : '';
+          return (
+            <li class={`timeline-item ${edge}`} style={`--pos: ${p.toFixed(2)}%`} data-level={i % 2} tabindex="0">
+              <div class="timeline-card">
+                <span class="timeline-year">{event.date}</span>
+                <div class="timeline-body">
+                  <h3 class="timeline-heading">{event.heading}</h3>
+                  <p>{event.text}</p>
+                </div>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
 
-      <li class="timeline-item">
-        <span class="timeline-year">Nov 2014</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Started learning to DJ</h3>
-          <p>The beginning of the journey.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Jun 2015</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Nonsense at Noni's</h3>
-          <p>Played at Nonsense at Noni's, supporting Kimber.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Aug 2016</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Played Jungle</h3>
-          <p>DJ set at Jungle.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Dec 2016</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Released "Lil Bat" Score</h3>
-          <p>Released the Lil Bat score on SoundCloud.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Jan 2017</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Played Iris (side room)</h3>
-          <p>DJ set in the side room at the old Iris location.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Dec 2017–<br>Dec 2019</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Ran Contrast</h3>
-          <p>Hosted and ran Contrast, a regular party night.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Aug 2018</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Slow &amp; Low at Aisle 5</h3>
-          <p>Played Slow &amp; Low at Aisle 5.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Jan 2018</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Launched UUeird</h3>
-          <p>Founded the record label UUeird.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Jan 2020</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">Aisle 5 supporting MartyParty</h3>
-          <p>Support set for MartyParty at Aisle 5.</p>
-        </div>
-      </li>
-
-      <li class="timeline-item">
-        <span class="timeline-year">Feb 2020</span>
-        <div class="timeline-body">
-          <h3 class="timeline-heading">The Masquerade (Torch event)</h3>
-          <p>Played the Masquerade for a Torch event.</p>
-        </div>
-      </li>
-
-    </ol>
+      <div class="timeline-axis" aria-hidden="true">
+        {events.filter((event) => event.end).map((event) => (
+          <span class="timeline-range" style={`--from: ${pos(event.start).toFixed(2)}%; --to: ${pos(event.end!).toFixed(2)}%`}></span>
+        ))}
+        {years.map((year) => (
+          <span class="timeline-tick" style={`--pos: ${pos([year, 1]).toFixed(2)}%`}>{year}</span>
+        ))}
+      </div>
+    </div>
   </section>
 </Default>

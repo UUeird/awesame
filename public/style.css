@@ -450,6 +450,189 @@ html, body {
   line-height: 1.6;
 }
 
+/* Phones: the card wrapper drops out so date and body sit side by side */
+.timeline-card {
+  display: contents;
+}
+
+.timeline-item:focus {
+  outline: none;
+}
+
+.timeline-axis {
+  display: none;
+}
+
+/* Desktop: a horizontal axis with dots on stems; details show in a tooltip */
+@media (min-width: 900px) {
+  .timeline-wrap {
+    margin-top: 7em;
+  }
+
+  .timeline {
+    height: 80px;
+  }
+
+  .timeline::before {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: auto;
+    height: 2px;
+  }
+
+  .timeline-item {
+    position: absolute;
+    left: var(--pos);
+    bottom: 0;
+    display: block;
+    width: 24px;
+    height: 36px;
+    margin: 0 0 0 -12px;
+  }
+
+  .timeline-item[data-level="1"] {
+    height: 72px;
+  }
+
+  /* Stem */
+  .timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 11px;
+    top: 6px;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-line);
+  }
+
+  /* Dot */
+  .timeline-item::before {
+    left: 6px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    z-index: 1;
+    transition: transform 0.14s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .timeline-item:hover::before,
+  .timeline-item:focus::before {
+    transform: scale(1.4);
+  }
+
+  .timeline-item:focus-visible::before {
+    box-shadow: 0 0 0 3px var(--color-bg), 0 0 0 5px var(--color-text);
+  }
+
+  .timeline-card {
+    display: block;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    z-index: 5;
+    width: 260px;
+    padding: 12px 14px;
+    background: var(--color-text);
+    border-radius: 10px;
+    transform: translateX(-50%) translateY(4px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.14s, transform 0.14s, visibility 0.14s;
+  }
+
+  .timeline-item.is-start .timeline-card {
+    left: -4px;
+    transform: translateY(4px);
+  }
+
+  .timeline-item.is-end .timeline-card {
+    left: auto;
+    right: -4px;
+    transform: translateY(4px);
+  }
+
+  .timeline-item:hover .timeline-card,
+  .timeline-item:focus .timeline-card {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item.is-start:hover .timeline-card,
+  .timeline-item.is-start:focus .timeline-card,
+  .timeline-item.is-end:hover .timeline-card,
+  .timeline-item.is-end:focus .timeline-card {
+    transform: none;
+  }
+
+  .timeline-card .timeline-year {
+    display: block;
+    min-width: 0;
+    max-width: none;
+    padding: 0;
+    margin-bottom: 4px;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--amber-300);
+  }
+
+  .timeline-card .timeline-body {
+    padding: 0;
+  }
+
+  .timeline-card .timeline-heading {
+    margin-bottom: 2px;
+    color: var(--amber-50);
+  }
+
+  .timeline-card .timeline-body p {
+    font-size: 0.9em;
+    line-height: 1.45;
+    color: var(--amber-200);
+  }
+
+  .timeline-axis {
+    display: block;
+    position: relative;
+    height: 2.5em;
+  }
+
+  /* A span of time (e.g. running Contrast) as a thick bar on the line */
+  .timeline-range {
+    position: absolute;
+    top: -5px;
+    left: var(--from);
+    width: calc(var(--to) - var(--from));
+    height: 8px;
+    border-radius: 4px;
+    background: var(--color-text);
+  }
+
+  .timeline-tick {
+    position: absolute;
+    top: 12px;
+    left: var(--pos);
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--color-text-muted);
+  }
+
+  .timeline-tick::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    width: 1px;
+    height: 6px;
+    background: var(--color-line);
+  }
+}
+
 /* ── Press Kit ── */
 .press-block {
   margin-bottom: 2.5em;
