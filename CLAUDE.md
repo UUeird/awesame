@@ -29,6 +29,7 @@ src/layouts/Default.astro — shared layout: head/meta/OG tags, header, nav, foo
 public/              — static assets served as-is (style.css, favicon.svg, awesame-logo.png, images/icons/, robots.txt)
 astro.config.mjs      — site URL + @astrojs/sitemap integration
 CNAME                — custom domain: awesa.me
+awesame logos/       — brand assets (not served, design reference only)
 ```
 
 ## Constraints to keep in mind
